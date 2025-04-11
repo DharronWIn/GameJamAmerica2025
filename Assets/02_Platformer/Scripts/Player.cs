@@ -58,7 +58,7 @@ namespace Starter.Platformer
 
 		private GameManager _gameManager;
 
-		float scale = 0.1550045f;
+		public float scale ;
 
 
 		public void Respawn(Vector3 position, bool resetCoins)
@@ -84,6 +84,8 @@ namespace Starter.Platformer
 				Nickname = PlayerPrefs.GetString("PlayerName");
 
 				scale = ScalingRoot.localScale.x;
+				ScalingRoot.localScale = Vector3.Lerp(ScalingRoot.localScale, new Vector3(scale, scale, scale), Time.deltaTime * 8f);
+
 			}
 
 			// In case the nickname is already changed,
@@ -126,7 +128,7 @@ namespace Starter.Platformer
 			FootstepSound.pitch = KCC.RealSpeed > SprintSpeed - 1 ? 1.5f : 1f;
 
 
-			ScalingRoot.localScale = Vector3.Lerp(ScalingRoot.localScale, new Vector3(scale, scale, scale), Time.deltaTime * 8f);
+			//ScalingRoot.localScale = Vector3.Lerp(ScalingRoot.localScale, new Vector3(scale, scale, scale), Time.deltaTime * 8f);
 
 			var emission = DustParticles.emission;
 			emission.enabled = KCC.IsGrounded && KCC.RealSpeed > 1f;

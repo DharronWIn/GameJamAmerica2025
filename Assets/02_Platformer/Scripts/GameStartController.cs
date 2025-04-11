@@ -15,7 +15,8 @@ public class GameStartController : NetworkBehaviour
 
     public UIGameMenu uIGameMenu;
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         if (playerConnectedText != null) playerConnectedText.text = 1 + "/" + MaxPlayers.ToString();
     }
 
@@ -30,7 +31,7 @@ public class GameStartController : NetworkBehaviour
             {
                 Debug.Log("All players joined. Starting game...");
                 GameStarted = true;
-                 OnPlayerCompled();
+                OnPlayerCompled();
             }
         }
 
@@ -43,9 +44,9 @@ public class GameStartController : NetworkBehaviour
 
     public void OnPlayerCompled()
     {
-        Debug.Log("Player completed: " + Runner.LocalPlayer);
+        Debug.Log("Players completed: " + Runner.ActivePlayers.Count());
         uIGameMenu.LunchGame();
-        
+
     }
 
 }
